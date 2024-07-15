@@ -3,7 +3,7 @@ import { useUserStore } from '@/components/user/store/useUserStore'
 import { storeToRefs } from 'pinia'
 import type { Ref } from 'vue'
 import { getTimestampNow } from '@/shared/utils/getTimestampNow'
-import { getMaxId } from '@/shared/utils/getMaxId'
+import { getNextId } from '@/shared/utils/getNextId'
 
 export const useUserTable = (isPopupOpen: Ref<boolean>) => {
   const store = useUserStore()
@@ -26,7 +26,7 @@ export const useUserTable = (isPopupOpen: Ref<boolean>) => {
 
   const createUserItem = (form: UserForm) => {
     const user = {
-      id: getMaxId(users.value),
+      id: getNextId(users.value),
       firstName: form.firstName,
       lastName: form.lastName,
       email: form.email,
